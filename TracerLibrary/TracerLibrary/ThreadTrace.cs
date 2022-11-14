@@ -1,9 +1,17 @@
-﻿namespace TracerLibrary
+﻿using System.Text.Json.Serialization;
+using System.Xml.Serialization;
+
+namespace TracerLibrary
+
 {
+    [XmlType("thread")]
     public class ThreadTrace
     {
+        [XmlAttribute("id"), JsonPropertyName("id")]
         public int ThreadId { get; set; }
+        [XmlAttribute("time"), JsonPropertyName("time")]
         public long ThreadTime { get; set; }
+        [JsonPropertyName("methods"), XmlElement("methods")]
         public List<MethodData> MethodDatas { get; set; } = new();
         public ThreadTrace(int threadId)
         {

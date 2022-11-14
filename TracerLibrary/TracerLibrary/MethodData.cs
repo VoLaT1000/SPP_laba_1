@@ -1,12 +1,17 @@
 ﻿using System.Diagnostics;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
 
 namespace TracerLibrary
 {
     public class MethodData
     {
+        [XmlAttribute("name"), JsonPropertyName("name")]
         public string? MethodName { get; set; }
+        [XmlAttribute("class"), JsonPropertyName("class")]
         public string? ClassName { get; set; }
         private long time;
+        [XmlAttribute("time"), JsonPropertyName("time")]
         public long Time
         {
             get
@@ -19,6 +24,7 @@ namespace TracerLibrary
             }
             set => time = value;
         }
+        [XmlElement("methods"), JsonPropertyName("methods")]
         public List<MethodData>? NestedMethods { get; set; }
         private readonly Stopwatch _stopwatch = new();
         public MethodData(string methodName, string className)

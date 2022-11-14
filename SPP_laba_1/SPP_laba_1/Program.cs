@@ -15,6 +15,9 @@ namespace Program
             ITracerSerializer serializotor = new JsonTracerSerializer();
             string result = serializotor.Serialize(tracer.GetTraceResult());
             Console.WriteLine(result);
+            serializotor = new XMLTracerSerializer();
+            result = serializotor.Serialize(tracer.GetTraceResult());
+            Console.WriteLine(result);
             Console.ReadKey();
         }
         public void DoWork(object o)
