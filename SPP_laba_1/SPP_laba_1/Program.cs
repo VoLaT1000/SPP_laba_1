@@ -1,4 +1,5 @@
-﻿using SerializeLibrary;
+﻿using PrintersLibrary;
+using SerializeLibrary;
 using TracerLibrary;
 
 namespace Program
@@ -14,10 +15,15 @@ namespace Program
             thread.Join();
             ITracerSerializer serializotor = new JsonTracerSerializer();
             string result = serializotor.Serialize(tracer.GetTraceResult());
-            Console.WriteLine(result);
+            IPrinter CONSOLEprinter = new ConsolePrinter();
+            IPrinter JSONprinter = new FilePrinter("../../../JSONResult.xml");
+            JSONprinter.Print(result);
+            CONSOLEprinter.Print(result);
             serializotor = new XMLTracerSerializer();
             result = serializotor.Serialize(tracer.GetTraceResult());
-            Console.WriteLine(result);
+            IPrinter XMLprinter = new FilePrinter("../../../XMLResult.xml");
+            XMLprinter.Print(result);
+            CONSOLEprinter.Print(result);
             Console.ReadKey();
         }
         public void DoWork(object o)
