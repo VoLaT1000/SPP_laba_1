@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPP_laba_1", "SPP_laba_1\SP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TracerLibrary", "..\TracerLibrary\TracerLibrary\TracerLibrary.csproj", "{BB5F2C03-EDCD-43CB-B1EB-9177E5990EF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializeLibrary", "SerializeLibrary\SerializeLibrary.csproj", "{136EEB3B-CDC5-4890-9F5C-59ABDE0A9727}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BB5F2C03-EDCD-43CB-B1EB-9177E5990EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB5F2C03-EDCD-43CB-B1EB-9177E5990EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB5F2C03-EDCD-43CB-B1EB-9177E5990EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{136EEB3B-CDC5-4890-9F5C-59ABDE0A9727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136EEB3B-CDC5-4890-9F5C-59ABDE0A9727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136EEB3B-CDC5-4890-9F5C-59ABDE0A9727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136EEB3B-CDC5-4890-9F5C-59ABDE0A9727}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

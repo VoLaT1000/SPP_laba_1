@@ -1,4 +1,5 @@
-﻿using TracerLibrary;
+﻿using SerializeLibrary;
+using TracerLibrary;
 
 namespace Program
 {
@@ -11,12 +12,9 @@ namespace Program
             ITracer tracer = new Tracer(new TraceResult());
             thread.Start(tracer);
             thread.Join();
-            var traceResult = new TraceResult();
-            traceResult = tracer.GetTraceResult();
-            foreach (var trace in traceResult.ThreadTraces)
-            {
-                Console.WriteLine($"id: {trace.Value.ThreadId}   time: {trace.Value.ThreadTime}");
-            }
+            ITracerSerializer serializotor = new JsonTracerSerializer();
+            string result = serializotor.Serialize(tracer.GetTraceResult());
+            Console.WriteLine(result);
             Console.ReadKey();
         }
         public void DoWork(object o)
