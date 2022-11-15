@@ -1,5 +1,4 @@
-﻿
-namespace TracerLibrary
+﻿namespace TracerLibrary
 {
     public interface ITracer
     {

@@ -8,31 +8,46 @@ namespace Program
     {
         private static void Main(string[] args)
         {
-            var program = new Program();
-            var thread = new Thread(program.DoWork);
             ITracer tracer = new Tracer(new TraceResult());
-            thread.Start(tracer);
-            thread.Join();
-            ITracerSerializer serializotor = new JsonTracerSerializer();
-            TraceResult traceResult = tracer.GetTraceResult();
-            int test = traceResult.ThreadTraces[0].MethodDatas.Count;
-            string result = serializotor.Serialize(tracer.GetTraceResult());
             IPrinter CONSOLEprinter = new ConsolePrinter();
             IPrinter JSONprinter = new FilePrinter("../../../JSONResult.xml");
-            JSONprinter.Print(result);
-            CONSOLEprinter.Print(result);
-            serializotor = new XMLTracerSerializer();
-            result = serializotor.Serialize(tracer.GetTraceResult());
             IPrinter XMLprinter = new FilePrinter("../../../XMLResult.xml");
-            XMLprinter.Print(result);
-            CONSOLEprinter.Print(result);
+            ITracerSerializer JsonSerializotor = new JsonTracerSerializer();
+            ITracerSerializer XMLSerializotor = new XMLTracerSerializer();
+
+            var program = new Program();
+            var thread_1 = new Thread(program.Method_1);
+            var thread_2 = new Thread(program.Method_2);
+
+            thread_1.Start(tracer);
+            thread_2.Start(tracer);
+            thread_1.Join();
+            thread_2.Join();
+
+            TraceResult traceResult = tracer.GetTraceResult();
+
+
+            string JsonResult = JsonSerializotor.Serialize(tracer.GetTraceResult());
+            string XMLResult = XMLSerializotor.Serialize(tracer.GetTraceResult());
+
+            JSONprinter.Print(JsonResult);
+            XMLprinter.Print(XMLResult);
+            CONSOLEprinter.Print(JsonResult);
+            CONSOLEprinter.Print(XMLResult);
             Console.ReadKey();
         }
-        public void DoWork(object o)
+        public void Method_1(object o)
         {
             var tracer = (Tracer)o;
             tracer.StartTrace();
             Thread.Sleep(100);
+            tracer.StopTrace();
+        }
+        public void Method_2(object o)
+        {
+            var tracer = (Tracer)o;
+            tracer.StartTrace();
+            Thread.Sleep(200);
             tracer.StopTrace();
         }
     }

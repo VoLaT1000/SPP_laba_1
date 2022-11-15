@@ -1,5 +1,4 @@
-﻿
-namespace PrintersLibrary
+﻿namespace PrintersLibrary
 {
     public interface IPrinter
     {

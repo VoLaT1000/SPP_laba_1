@@ -1,6 +1,4 @@
-﻿
-
-using System.Xml;
+﻿using System.Xml;
 using System.Xml.Serialization;
 using TracerLibrary;
 
