@@ -14,6 +14,8 @@ namespace Program
             thread.Start(tracer);
             thread.Join();
             ITracerSerializer serializotor = new JsonTracerSerializer();
+            TraceResult traceResult = tracer.GetTraceResult();
+            int test = traceResult.ThreadTraces[0].MethodDatas.Count;
             string result = serializotor.Serialize(tracer.GetTraceResult());
             IPrinter CONSOLEprinter = new ConsolePrinter();
             IPrinter JSONprinter = new FilePrinter("../../../JSONResult.xml");
